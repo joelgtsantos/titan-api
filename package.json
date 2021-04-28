@@ -1,0 +1,22 @@
+{
+  "name": "fashioncloud",
+  "version": "1.0.0",
+  "description": "Fashion Cloud API",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joelgtsantos/titan-api.git"
+  },
+  "author": "Joel Ajucum",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joelgtsantos/titan-api/issues"
+  },
+  "homepage": "https://github.com/joelgtsantos/titan-api#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
