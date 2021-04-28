@@ -4,7 +4,10 @@ const APIFeatures = require('./../utils/apiFeatures');
 
 exports.deleteOne = Model =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findByIdAndDelete(req.params.id);
+
+    let doc = await Model.deleteOne({
+      key: req.params.id 
+    });
 
     if (!doc) {
       return next(new AppError('No cache element found with this Key', 404));
@@ -18,7 +21,10 @@ exports.deleteOne = Model =>
 
 exports.updateOne = Model =>
   catchAsync(async (req, res, next) => {
-    const doc = await Model.findByIdAndUpdate(req.params.id, req.body, {
+    
+    const doc = await Model.findByOneAndUpdate({
+      key: req.params.id
+    }, req.body, {
       new: true,
       runValidators: true
     });
@@ -37,6 +43,18 @@ exports.updateOne = Model =>
 
 exports.createOne = Model =>
   catchAsync(async (req, res, next) => {
+
+    const count = await Model.count({});
+    
+    //Compare the max number of cache items 
+    if(count > process.env.TOTAL_CACHE_ITEMS){
+      const older = await Model.findOne().sort({createAt: -1}).exec();
+       await Model.deleteOne({
+        key: older.key 
+      });
+    }
+
+    //create a new one
     const doc = await Model.create(req.body);
 
     res.status(201).json({
@@ -45,15 +63,17 @@ exports.createOne = Model =>
         data: doc
       }
     });
+    
   });
 
 exports.getOne = (Model, popOptions) =>
   catchAsync(async (req, res, next) => {
-    let query = Model.findById(req.params.id);
-    if (popOptions) query = query.populate(popOptions);
-    const doc = await query;
 
-    if (!doc) {
+    let doc = await Model.find({
+      key: req.params.id 
+    });
+
+    if (!doc.length) {
       return next(new AppError('Cache miss', 404));
     }
 
@@ -69,7 +89,6 @@ exports.getAll = Model =>
   catchAsync(async (req, res, next) => {
     // To allow for nested GET reviews on tour (hack)
     let filter = {};
-    if (req.params.tourId) filter = { tour: req.params.tourId };
 
     const features = new APIFeatures(Model.find(filter), req.query)
       .filter()

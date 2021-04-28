@@ -13,7 +13,7 @@ const cacheSchema = new mongoose.Schema(
     },
     createAt: {
       type: Date,
-      expires: '1m',
+      expires: '1m', //Works as a TTL
       default: Date.now
     }
   },
@@ -22,12 +22,6 @@ const cacheSchema = new mongoose.Schema(
     toObject: { virtuals: true }
   }
 );
-
-cacheSchema.post(/^find/, function(docs, next) {
-  console.log(`Query took ${Date.now() - this.start} milliseconds!`);
-  next();
-});
-
 
 const Cache = mongoose.model('Cache', cacheSchema);
 
