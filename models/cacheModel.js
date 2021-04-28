@@ -13,7 +13,7 @@ const cacheSchema = new mongoose.Schema(
     },
     createAt: {
       type: Date,
-      expires: '1m', //Works as a TTL
+      expires: process.env.TTL, //Works as a TTL
       default: Date.now
     }
   },

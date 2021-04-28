@@ -1,0 +1,183 @@
+{
+	"info": {
+		"_postman_id": "9ab17f54-2867-4a0c-8972-a5328034ea0f",
+		"name": "fashion-cloud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get-cache",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-cache-element",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"key\": \"cache9\",\n\t\"value\": \"somevalue 9\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/v1/cache/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cache",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "partial-cache-update",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"key\": \"cache 5\",\n\t\"value\": \"somevalue 5\"\n}"
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/v1/cache/6089c1b69a50e52b9c9a8430",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cache",
+						"6089c1b69a50e52b9c9a8430"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-cache-element",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/v1/cache/cache9",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cache",
+						"cache9"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-cache-element",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/v1/cache/6089b4bce9dbe435c86d2560",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cache",
+						"6089b4bce9dbe435c86d2560"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete-all-cache-elements",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://127.0.0.1:3000/api/v1/cache/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"v1",
+						"cache",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
