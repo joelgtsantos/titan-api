@@ -5,13 +5,14 @@ const router = express.Router();
 
 router
   .route('/')
-  .get(cacheController.getAllCache)
-  .post(cacheController.createCache);
+  .get(cacheController.getAllCache)//Get all
+  .post(cacheController.createCache)//Create one cache item
+  .delete(cacheController.deleteAllCache);//Delete all
 
 router
   .route('/:id')
-  .get(cacheController.getCache)
-  .patch(cacheController.updateCache)
-  .delete(cacheController.deleteCache);
+  .get(cacheController.getCache)//Get one
+  .patch(cacheController.updateCache)//Partial update
+  .delete(cacheController.deleteCache);//Delete one
 
 module.exports = router;

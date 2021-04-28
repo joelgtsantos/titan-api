@@ -88,3 +88,18 @@ exports.getAll = Model =>
       }
     });
   });
+
+  exports.deleteAll = Model =>
+  catchAsync(async (req, res, next) => {
+    const doc = await Model.deleteMany({});
+
+    if (!doc) {
+      return next(new AppError('No cache element found with this Key', 404));
+    }
+
+    res.status(204).json({
+      status: 'success',
+      data: null
+    });
+  });
+
