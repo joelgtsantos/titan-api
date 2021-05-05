@@ -6,7 +6,7 @@ Titan fashion cloud cache API
 
 ### Cache items limit
 
-Whenever a user tries to cached a key/value pair is going has to bear in mind the size is limited so may delete an old key in the DB.
+Whenever a user tries to cache a key/value pair, has to bear in mind the cache size is limited so the API may delete an old key in the DB.
 
 - A new parameter has been added to the config.env to specified the limit of records allowed
 - Based on this new parameter the app checks whether has reached the limit or not
